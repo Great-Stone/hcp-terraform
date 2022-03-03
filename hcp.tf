@@ -18,7 +18,7 @@ resource "hcp_consul_cluster" "gs" {
   connect_enabled = true
   datacenter      = "gs-hcp"
   public_endpoint = true
-  size            = "small"
+  size            = var.consul_size
 }
 
 resource "hcp_vault_cluster" "gs" {
@@ -26,7 +26,7 @@ resource "hcp_vault_cluster" "gs" {
   cluster_id      = "gs-cluster"
   hvn_id          = hcp_hvn.gs.hvn_id
   public_endpoint = true
-  tier            = "standard_small"
+  tier            = var.vault_size
 }
 
 resource "hcp_vault_cluster_admin_token" "gs" {

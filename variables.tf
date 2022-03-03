@@ -8,3 +8,13 @@ variable "vault_enable" {
 variable "consul_enable" {
   default = false
 }
+
+variable "consul_size" {
+  description = "development, standard, plus"
+  default = "development"
+}
+
+variable "vault_size" {
+  description = "dev, standard_small, standard_medium, standard_large, starter_small"
+  default = "dev"
+}
