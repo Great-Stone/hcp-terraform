@@ -1,0 +1,22 @@
+// provider "vault" {
+//   address   = hcp_vault_cluster.gs.0.vault_public_endpoint_url
+//   namespace = hcp_vault_cluster.gs.0.namespace
+//   token     = hcp_vault_cluster_admin_token.gs.0.token
+// }
+
+// resource "vault_consul_secret_backend" "test" {
+//   path        = "consul"
+//   description = "Manages the Consul backend"
+
+//   address = "hcp_consul_cluster.gs.consul_public_endpoint_url"
+//   token   = hcp_consul_cluster.gs.0.consul_root_token_secret_id
+// }
+
+// resource "vault_consul_secret_backend_role" "example" {
+//   name    = "test-role"
+//   backend = vault_consul_secret_backend.test.path
+
+//   policies = [
+//     "example-policy",
+//   ]
+// }
