@@ -14,11 +14,14 @@ resource "hcp_consul_cluster" "gs" {
   count = var.consul_enable ? 1 : 0
   cluster_id      = "gs-hcp"
   hvn_id          = hcp_hvn.gs.hvn_id
-  tier            = "standard"
+  tier            = var.consul_tier
   connect_enabled = true
   datacenter      = "gs-hcp"
   public_endpoint = true
   size            = var.consul_size
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "hcp_vault_cluster" "gs" {
@@ -26,10 +29,13 @@ resource "hcp_vault_cluster" "gs" {
   cluster_id      = "gs-cluster"
   hvn_id          = hcp_hvn.gs.hvn_id
   public_endpoint = true
-  tier            = var.vault_size
+  tier            = var.vault_tier
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
-resource "hcp_vault_cluster_admin_token" "gs" {
-  count = var.vault_enable ? 1 : 0
-  cluster_id = hcp_vault_cluster.gs.0.cluster_id
-}
+// resource "hcp_vault_cluster_admin_token" "gs" {
+//   count = var.vault_enable ? 1 : 0
+//   cluster_id = hcp_vault_cluster.gs.0.cluster_id
+// }
