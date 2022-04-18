@@ -19,9 +19,9 @@ resource "hcp_consul_cluster" "gs" {
   datacenter      = "gs-hcp"
   public_endpoint = true
   size            = var.consul_size
-  lifecycle {
-    prevent_destroy = true
-  }
+  // lifecycle {
+  //   prevent_destroy = true
+  // }
 }
 
 resource "hcp_vault_cluster" "gs" {
